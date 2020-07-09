@@ -200,6 +200,10 @@ avr-*-*)
 	gdb_sim=../sim/avr/libsim.a
 	;;
 
+bee-*-elf)
+	gdb_target_obs="bee-tdep.o"
+	;;
+
 bfin-*-*linux*)
 	# Target: Blackfin Linux
 	gdb_target_obs="bfin-tdep.o bfin-linux-tdep.o linux-tdep.o"

@@ -3742,6 +3742,16 @@ ENUMDOC
   ARC relocs.
 
 ENUM
+  BFD_RELOC_BEE_30_PCREL
+ENUMX
+  BFD_RELOC_BEE_28_PCREL
+ENUMX
+  BFD_RELOC_BEE_30
+ENUMDOC
+  Bee ELF relocations.
+COMMENT
+
+ENUM
   BFD_RELOC_BFIN_16_IMM
 ENUMDOC
   ADI Blackfin 16 bit immediate absolute reloc.

@@ -1004,6 +1004,9 @@ case "${target}" in
       noconfigdirs="$noconfigdirs target-newlib target-libgloss"
     fi
     ;;
+  bee-*-*)
+    noconfigdirs="$noconfigdirs"
+    ;;
   c4x-*-* | tic4x-*-*)
     noconfigdirs="$noconfigdirs target-libgloss"
     ;;

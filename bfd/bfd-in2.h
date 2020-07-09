@@ -1957,6 +1957,8 @@ enum bfd_architecture
 #define bfd_mach_ck807         6
 #define bfd_mach_ck810         7
 #define bfd_mach_ck860         8
+  bfd_arch_bee,       /* The Bee virtual machine.  */
+#define bfd_mach_bee           1
   bfd_arch_last
   };
 
@@ -3420,6 +3422,12 @@ pc-relative or some form of GOT-indirect relocation.  */
   BFD_RELOC_ARC_S21H_PCREL_PLT,
   BFD_RELOC_ARC_NPS_CMEM16,
   BFD_RELOC_ARC_JLI_SECTOFF,
+
+/* Bee ELF relocations.  */
+  BFD_RELOC_BEE_30_PCREL,
+  BFD_RELOC_BEE_28_PCREL,
+  BFD_RELOC_BEE_30,
+
 
 /* ADI Blackfin 16 bit immediate absolute reloc.  */
   BFD_RELOC_BFIN_16_IMM,

@@ -443,7 +443,7 @@ if { ![is_elf_format] } then {
 }
 
 # Test objdump -WL on a file that contains line information for multiple files and search directories.
-# Not supported on mcore and moxie targets because they do not (yet) support the generation
+# Not supported on mcore, moxie and bee targets because they do not (yet) support the generation
 # of DWARF2 line debug information.
 
 if { ![is_elf_format]
@@ -451,6 +451,7 @@ if { ![is_elf_format]
      || [istarget "ia64*-*-*"]
      || [istarget "mcore-*-*"]
      || [istarget "moxie-*-*"]
+     || [istarget "bee*-*-*"]
 } then {
     unsupported "objump decode line"
 } else {

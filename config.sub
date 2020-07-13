@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC2006,SC2268 # see below for rationale
 
-timestamp='2022-01-03'
+timestamp='2022-03-13'
 
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -186,7 +186,7 @@ case $1 in
 					| hitachi* | c[123]* | convex* | sun | crds | omron* | dg \
 					| ultra | tti* | harris | dolphin | highlevel | gould \
 					| cbm | ns | masscomp | apple | axis | knuth | cray \
-					| microblaze* | sim | cisco \
+					| microblaze* | sim | cisco | sc3d \
 					| oki | wec | wrs | winbond)
 						basic_machine=$field1-$field2
 						basic_os=
@@ -262,6 +262,10 @@ case $1 in
 			balance)
 				basic_machine=ns32k-sequent
 				basic_os=dynix
+				;;
+			bee64)
+				basic_machine=bee-unknown
+				os=
 				;;
 			blackfin)
 				basic_machine=bfin-unknown
@@ -973,6 +977,9 @@ unset -v basic_machine
 case $cpu-$vendor in
 	# Here we handle the default manufacturer of certain CPU types in canonical form. It is in
 	# some cases the only manufacturer, in others, it is the most popular.
+        bee-unknown)
+                vendor=sc3d
+                ;;
 	craynv-unknown)
 		vendor=cray
 		basic_os=${basic_os:-unicosmp}
@@ -1193,6 +1200,7 @@ case $cpu-$vendor in
 			| asmjs \
 			| ba \
 			| be32 | be64 \
+			| bee \
 			| bfin | bpf | bs2000 \
 			| c[123]* | c30 | [cjt]90 | c4x \
 			| c8051 | clipper | craynv | csky | cydra \

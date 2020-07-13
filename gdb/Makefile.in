@@ -1262,6 +1262,7 @@ HFILES_NO_SRCDIR = \
 	ax.h \
 	ax-gdb.h \
 	bcache.h \
+	bee-tdep.h \
 	bfd-target.h \
 	bfin-tdep.h \
 	block.h \
@@ -1649,6 +1650,8 @@ ALLDEPFILES = \
 	arm-obsd-tdep.c \
 	arm-tdep.c \
 	avr-tdep.c \
+	bee32-tdep.c \
+	bee64-tdep.c \
 	bfin-linux-tdep.c \
 	bfin-tdep.c \
 	bpf-tdep.c \

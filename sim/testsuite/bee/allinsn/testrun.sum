@@ -1,0 +1,18 @@
+Test run by rrt on Tue Mar 22 22:41:04 2022
+Target is bee-sc3d-elf
+Host   is x86_64-pc-linux-gnu
+
+		===  tests ===
+
+Schedule of variations:
+    unix
+
+Running target unix
+WARNING: Assuming target board is the local machine (which is probably wrong).
+You may need to set your DEJAGNU environment variable.
+Running ./testsuite/./bee/allinsn.exp ...
+UNTESTED: ./bee/pass.s
+
+		===  Summary ===
+
+# of untested testcases		1

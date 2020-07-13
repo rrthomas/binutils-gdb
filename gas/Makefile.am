@@ -131,11 +131,14 @@ HFILES = \
 # CPU files in config.
 
 TARGET_CPU_CFILES = \
+	config/bee32.c \
+	config/bee64.c \
 	config/tc-aarch64.c \
 	config/tc-alpha.c \
 	config/tc-arc.c \
 	config/tc-arm.c \
 	config/tc-avr.c \
+	config/tc-bee.c \
 	config/tc-bfin.c \
 	config/tc-bpf.c \
 	config/tc-cr16.c \
@@ -207,11 +210,13 @@ TARGET_CPU_CFILES = \
 	config/tc-z8k.c
 
 TARGET_CPU_HFILES = \
+	config/beenn.h \
 	config/tc-aarch64.h \
 	config/tc-alpha.h \
 	config/tc-arc.h \
 	config/tc-arm.h \
 	config/tc-avr.h \
+	config/tc-bee.h \
 	config/tc-bfin.h \
 	config/tc-bpf.h \
 	config/tc-cr16.h \

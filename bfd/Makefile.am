@@ -101,6 +101,7 @@ ALL_MACHINES = \
 	cpu-arc.lo \
 	cpu-arm.lo \
 	cpu-avr.lo \
+	cpu-bee.lo \
 	cpu-bfin.lo \
 	cpu-bpf.lo \
 	cpu-cr16.lo \
@@ -185,6 +186,7 @@ ALL_MACHINES_CFILES = \
 	cpu-arc.c \
 	cpu-arm.c \
 	cpu-avr.c \
+	cpu-bee.c \
 	cpu-bfin.c \
 	cpu-bpf.c \
 	cpu-cr16.c \
@@ -268,6 +270,7 @@ BFD32_BACKENDS = \
 	aout-cris.lo \
 	aout-ns32k.lo \
 	aout32.lo \
+	bee.lo \
 	cf-i386lynx.lo \
 	coff-go32.lo \
 	coff-i386.lo \
@@ -299,6 +302,7 @@ BFD32_BACKENDS = \
 	elf32-arc.lo \
 	elf32-arm.lo \
 	elf32-avr.lo \
+	elf32-bee.lo \
 	elf32-bfin.lo \
 	elf32-cr16.lo \
 	elf32-cris.lo \
@@ -401,6 +405,7 @@ BFD32_BACKENDS_CFILES = \
 	aout-cris.c \
 	aout-ns32k.c \
 	aout32.c \
+	bee.c \
 	cf-i386lynx.c \
 	coff-go32.c \
 	coff-i386.c \
@@ -432,6 +437,7 @@ BFD32_BACKENDS_CFILES = \
 	elf32-arc.c \
 	elf32-arm.c \
 	elf32-avr.c \
+	elf32-bee.c \
 	elf32-bfin.c \
 	elf32-cr16.c \
 	elf32-cris.c \
@@ -538,6 +544,7 @@ BFD64_BACKENDS = \
 	elf32-aarch64.lo \
 	elf64-aarch64.lo \
 	elfxx-aarch64.lo \
+	elf64-bee.lo \
 	aix5ppc-core.lo \
 	aout64.lo \
 	coff-alpha.lo \
@@ -609,6 +616,7 @@ BFD64_BACKENDS_CFILES = \
 	elf64-x86-64.c \
 	elfxx-x86.c \
 	elf64-bpf.c \
+	elf64-bee.c \
 	elf64.c \
 	elfn32-mips.c \
 	elfxx-aarch64.c \
@@ -688,7 +696,7 @@ CFILES = $(SOURCE_CFILES) $(BUILD_CFILES)
 ## This is a list of all .h files in the source tree minus those that
 ## are processed to produce other .h files
 SOURCE_HFILES = \
-	aout-target.h aoutx.h arc-got.h arc-plt.h \
+	aout-target.h aoutx.h arc-got.h arc-plt.h bee.h \
 	coff-arm.h coff-bfd.h coffcode.h coffswap.h \
 	cpu-aarch64.h cpu-arm.h cpu-h8300.h cpu-m68k.h cpu-riscv.h \
 	ecoff-bfd.h ecoffswap.h \
@@ -700,7 +708,7 @@ SOURCE_HFILES = \
 	elf64-hppa.h elf64-ppc.h elf64-tilegx.h \
 	elf-bfd.h elfcode.h elfcore.h elf-hppa.h elf-linker-x86.h \
 	elf-linux-core.h elf-nacl.h elf-s390.h elf-vxworks.h \
-	elfxx-aarch64.h elfxx-ia64.h elfxx-mips.h elfxx-riscv.h \
+	elfxx-aarch64.h elfxx-bee.h elfxx-ia64.h elfxx-mips.h elfxx-riscv.h \
 	elfxx-sparc.h elfxx-tilegx.h elfxx-x86.h elfxx-loongarch.h \
 	genlink.h go32stub.h \
 	libaout.h libbfd.h libcoff.h libecoff.h libhppa.h \

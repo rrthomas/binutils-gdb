@@ -136,9 +136,11 @@ GUILD_COMPILE_FLAGS = \
 
 SYSTEM_GDBINIT_DIR = system-gdbinit
 SYSTEM_GDBINIT_INSTALL_DIR = $(DESTDIR)$(GDB_DATADIR)/$(SYSTEM_GDBINIT_DIR)
+# FIXME: work out how to install bee.py for Bee architecture
 SYSTEM_GDBINIT_FILES = \
-	elinos.py \
-	wrs-linux.py
+	bee.py
+	# elinos.py \
+	# wrs-linux.py \
 
 FLAGS_TO_PASS = \
 	"prefix=$(prefix)" \

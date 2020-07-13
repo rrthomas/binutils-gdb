@@ -566,6 +566,9 @@ DESCRIPTION
 .#define bfd_mach_amdgcn_gfx1030 0x036
 .#define bfd_mach_amdgcn_gfx1031 0x037
 .#define bfd_mach_amdgcn_gfx1032 0x038
+.  bfd_arch_bee,       {* The Bee virtual machine.  *}
+.#define bfd_mach_bee32		32
+.#define bfd_mach_bee64		64
 .  bfd_arch_last
 .  };
 */
@@ -625,6 +628,7 @@ extern const bfd_arch_info_type bfd_amdgcn_arch;
 extern const bfd_arch_info_type bfd_arc_arch;
 extern const bfd_arch_info_type bfd_arm_arch;
 extern const bfd_arch_info_type bfd_avr_arch;
+extern const bfd_arch_info_type bfd_bee_arch;
 extern const bfd_arch_info_type bfd_bfin_arch;
 extern const bfd_arch_info_type bfd_cr16_arch;
 extern const bfd_arch_info_type bfd_cris_arch;
@@ -714,6 +718,7 @@ static const bfd_arch_info_type * const bfd_archures_list[] =
     &bfd_arc_arch,
     &bfd_arm_arch,
     &bfd_avr_arch,
+    &bfd_bee_arch,
     &bfd_bfin_arch,
     &bfd_cr16_arch,
     &bfd_cris_arch,

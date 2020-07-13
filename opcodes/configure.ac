@@ -267,6 +267,7 @@ if test x${all_targets} = xfalse ; then
 	bfd_arc_arch)		ta="$ta arc-dis.lo arc-opc.lo arc-ext.lo" ;;
 	bfd_arm_arch)		ta="$ta arm-dis.lo" ;;
 	bfd_avr_arch)		ta="$ta avr-dis.lo" ;;
+	bfd_bee_arch)		ta="$ta bee-dis.lo bee32-dis.lo bee64-dis.lo bee64-opc.lo bee32-opc.lo" ;;
 	bfd_bfin_arch)		ta="$ta bfin-dis.lo" ;;
 	bfd_cr16_arch)		ta="$ta cr16-dis.lo cr16-opc.lo" ;;
 	bfd_cris_arch)		ta="$ta cris-desc.lo cris-dis.lo cris-opc.lo cgen-bitset.lo" ;;

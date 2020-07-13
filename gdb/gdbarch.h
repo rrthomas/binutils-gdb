@@ -274,7 +274,7 @@ extern struct gdbarch *gdbarch_alloc (const struct gdbarch_info *info, struct gd
 
 
 /* Helper function.  Free a partially-constructed ``struct gdbarch''.
-   It is assumed that the caller freeds the ``struct
+   It is assumed that the caller frees the ``struct
    gdbarch_tdep''.  */
 
 extern void gdbarch_free (struct gdbarch *);

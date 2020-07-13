@@ -568,6 +568,7 @@ ALL_MACHINES = \
 	cpu-arc.lo \
 	cpu-arm.lo \
 	cpu-avr.lo \
+	cpu-bee.lo \
 	cpu-bfin.lo \
 	cpu-bpf.lo \
 	cpu-cr16.lo \
@@ -652,6 +653,7 @@ ALL_MACHINES_CFILES = \
 	cpu-arc.c \
 	cpu-arm.c \
 	cpu-avr.c \
+	cpu-bee.c \
 	cpu-bfin.c \
 	cpu-bpf.c \
 	cpu-cr16.c \
@@ -736,6 +738,7 @@ BFD32_BACKENDS = \
 	aout-cris.lo \
 	aout-ns32k.lo \
 	aout32.lo \
+	bee.lo \
 	cf-i386lynx.lo \
 	coff-go32.lo \
 	coff-i386.lo \
@@ -767,6 +770,7 @@ BFD32_BACKENDS = \
 	elf32-arc.lo \
 	elf32-arm.lo \
 	elf32-avr.lo \
+	elf32-bee.lo \
 	elf32-bfin.lo \
 	elf32-cr16.lo \
 	elf32-cris.lo \
@@ -869,6 +873,7 @@ BFD32_BACKENDS_CFILES = \
 	aout-cris.c \
 	aout-ns32k.c \
 	aout32.c \
+	bee.c \
 	cf-i386lynx.c \
 	coff-go32.c \
 	coff-i386.c \
@@ -900,6 +905,7 @@ BFD32_BACKENDS_CFILES = \
 	elf32-arc.c \
 	elf32-arm.c \
 	elf32-avr.c \
+	elf32-bee.c \
 	elf32-bfin.c \
 	elf32-cr16.c \
 	elf32-cris.c \
@@ -1007,8 +1013,10 @@ BFD64_BACKENDS = \
 	elf32-aarch64.lo \
 	elf64-aarch64.lo \
 	elfxx-aarch64.lo \
+	elf64-bee.lo \
 	aix5ppc-core.lo \
 	aout64.lo \
+	bee.lo \
 	coff-alpha.lo \
 	coff-x86_64.lo \
 	coff64-rs6000.lo \
@@ -1078,6 +1086,7 @@ BFD64_BACKENDS_CFILES = \
 	elf64-x86-64.c \
 	elfxx-x86.c \
 	elf64-bpf.c \
+	elf64-bee.c \
 	elf64.c \
 	elfn32-mips.c \
 	elfxx-aarch64.c \
@@ -1452,6 +1461,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/archive.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/archive64.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/archures.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bee.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bfd.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bfdio.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bfdwin.Plo@am__quote@
@@ -1484,6 +1494,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-arc.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-arm.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-avr.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-bee.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-bfin.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-bpf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-cr16.Plo@am__quote@
@@ -1579,6 +1590,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf32-arc.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf32-arm.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf32-avr.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf32-bee.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf32-bfin.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf32-cr16.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf32-cris.Plo@am__quote@
@@ -1646,6 +1658,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf64-aarch64.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf64-alpha.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf64-amdgcn.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf64-bee.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf64-bpf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf64-gen.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elf64-hppa.Plo@am__quote@

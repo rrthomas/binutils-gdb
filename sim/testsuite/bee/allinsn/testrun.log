@@ -1,0 +1,29 @@
+Test run by rrt on Tue Mar 22 22:41:04 2022
+Target is bee-sc3d-elf
+Host   is x86_64-pc-linux-gnu
+
+		===  tests ===
+
+Schedule of variations:
+    unix
+
+Running target unix
+Using /usr/share/dejagnu/baseboards/unix.exp as board description file for target.
+Using /usr/share/dejagnu/config/unix.exp as generic interface file for target.
+Using ./testsuite/config/default.exp as tool-and-target-specific interface file.
+WARNING: Assuming target board is the local machine (which is probably wrong).
+You may need to set your DEJAGNU environment variable.
+Running ./testsuite/./bee/allinsn.exp ...
+Can't find a compatible assembler
+Executing on host: false ./testsuite/lib/compilercheck.c     -E -o testsuite/./bee/allinsn/compilercheck.x    (timeout = 300)
+spawn -ignore SIGHUP false ./testsuite/lib/compilercheck.c -E -o testsuite/./bee/allinsn/compilercheck.x
+compiler exited with status 1
+Can't find a compatible C compiler
+Testing pass.s on machine bee.
+UNTESTED: ./bee/pass.s
+testcase ./testsuite/./bee/allinsn.exp completed in 0 seconds
+
+		===  Summary ===
+
+# of untested testcases		1
+runtest completed at Tue Mar 22 22:41:04 2022

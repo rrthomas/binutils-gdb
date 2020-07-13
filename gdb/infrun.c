@@ -2150,6 +2150,7 @@ maybe_software_singlestep (struct gdbarch *gdbarch)
 ptid_t
 user_visible_resume_ptid (int step)
 {
+  return inferior_ptid; // FIXME: this prevents a crash with sim
   ptid_t resume_ptid;
 
   if (non_stop)

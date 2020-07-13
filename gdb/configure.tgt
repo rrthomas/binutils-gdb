@@ -207,6 +207,10 @@ avr-*-*)
 	gdb_target_obs="avr-tdep.o"
 	;;
 
+bee-*-elf)
+	gdb_target_obs="bee-tdep.o bee64-tdep.o bee32-tdep.o"
+	;;
+
 bfin-*-*linux*)
 	# Target: Blackfin Linux
 	gdb_target_obs="bfin-tdep.o bfin-linux-tdep.o linux-tdep.o"
@@ -752,6 +756,7 @@ case "${targ}" in
 aarch64*-*-*)		gdb_sim=aarch64 ;;
 arm*-*-*)		gdb_sim=arm ;;
 avr*-*-*)		gdb_sim=avr ;;
+bee-*-*)		gdb_sim=bee ;;
 bfin-*-*)		gdb_sim=bfin ;;
 bpf-*-*)		gdb_sim=bpf ;;
 cris-*-*|cris32-*-*)	gdb_sim=cris ;;

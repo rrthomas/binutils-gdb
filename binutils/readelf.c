@@ -100,6 +100,7 @@
 #include "elf/arc.h"
 #include "elf/arm.h"
 #include "elf/avr.h"
+#include "elf/bee.h"
 #include "elf/bfin.h"
 #include "elf/cr16.h"
 #include "elf/cris.h"
@@ -1067,6 +1068,7 @@ guess_is_rela (unsigned int e_machine)
     case EM_ARC_COMPACT2:
     case EM_AVR:
     case EM_AVR_OLD:
+    case EM_BEE:
     case EM_BLACKFIN:
     case EM_CR16:
     case EM_CRIS:
@@ -1851,6 +1853,10 @@ dump_relocations (Filedata *          filedata,
 
 	case EM_MT:
 	  rtype = elf_mt_reloc_type (type);
+	  break;
+
+	case EM_BEE:
+	  rtype = elf_bee_reloc_type (type);
 	  break;
 
 	case EM_BLACKFIN:
@@ -3008,6 +3014,7 @@ get_machine_name (unsigned e_machine)
     case EM_ADAPTEVA_EPIPHANY:	return "Adapteva EPIPHANY";
     case EM_CYGNUS_FRV:		return "Fujitsu FR-V";
     case EM_S12Z:               return "Freescale S12Z";
+    case EM_BEE:		return "Bee";
 
     default:
       snprintf (buff, sizeof (buff), _("<unknown>: 0x%x"), e_machine);
@@ -14192,6 +14199,9 @@ is_32bit_abs_reloc (Filedata * filedata, unsigned int reloc_type)
     case EM_AVR_OLD:
     case EM_AVR:
       return reloc_type == 1;
+    case EM_BEE:
+      return (reloc_type == 2
+              || reloc_type == 6); /* R_BEE_32 || R_BEE_64.  */
     case EM_BLACKFIN:
       return reloc_type == 0x12; /* R_byte4_data.  */
     case EM_CRIS:
@@ -14803,6 +14813,7 @@ is_none_reloc (Filedata * filedata, unsigned int reloc_type)
     case EM_ARC_COMPACT2: /* R_ARC_NONE.  */
     case EM_ARC_COMPACT: /* R_ARC_NONE.  */
     case EM_ARM:     /* R_ARM_NONE.  */
+    case EM_BEE:     /* R_BEE_NONE.  */
     case EM_C166:    /* R_XC16X_NONE.  */
     case EM_CRIS:    /* R_CRIS_NONE.  */
     case EM_FT32:    /* R_FT32_NONE.  */

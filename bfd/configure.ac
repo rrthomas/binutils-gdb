@@ -483,6 +483,10 @@ do
     elf32_le_vec)		 tb="$tb elf32-gen.lo elf32.lo $elf" ;;
     elf64_be_vec)		 tb="$tb elf64-gen.lo elf64.lo $elf"; target_size=64 ;;
     elf64_le_vec)		 tb="$tb elf64-gen.lo elf64.lo $elf"; target_size=64 ;;
+    bee_elf32_be_vec)		 tb="$tb elf32-bee.lo bee.lo elf32.lo $elf" ;;
+    bee_elf32_le_vec)		 tb="$tb elf32-bee.lo bee.lo elf32.lo $elf" ;;
+    bee_elf64_be_vec)		 tb="$tb elf64-bee.lo bee.lo elf64.lo $elf"; target_size=64 ;;
+    bee_elf64_le_vec)		 tb="$tb elf64-bee.lo bee.lo elf64.lo $elf"; target_size=64 ;;
     bpf_elf64_le_vec)		 tb="$tb elf64-bpf.lo elf64.lo $elf"; target_size=64;;
     bpf_elf64_be_vec)		 tb="$tb elf64-bpf.lo elf64.lo $elf"; target_size=64 ;;
     epiphany_elf32_vec)		 tb="$tb elf32-epiphany.lo elf32.lo $elf" ;;

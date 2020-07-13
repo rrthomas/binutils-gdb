@@ -428,6 +428,15 @@ changequote([,])dnl
     # Any other special object files needed ?
     case ${cpu_type} in
 
+      bee)
+	for f in config/bee32.o config/bee64.o; do
+	  case " $extra_objects " in
+	    *" $f "*) ;;
+	    *) extra_objects="$extra_objects $f" ;;
+	  esac
+	done
+	;;
+
       bfin)
 	for f in config/bfin-parse.o config/bfin-lex-wrapper.o; do
 	  case " $extra_objects " in

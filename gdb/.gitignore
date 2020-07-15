@@ -1,6 +1,8 @@
 /Makefile
 /build-gnulib
 /gdb-gdb.gdb
+/gdb-gdb.py
+/init.l-tmp
 /nm.h
 
 /version.c
@@ -24,3 +26,9 @@
 /observer.inc
 /p-exp.c
 /rust-exp.c
+
+/doc/gdb-cfg.texi
+/doc/GDBvn.texi
+/doc/*.1
+/doc/*.5
+/doc/version.subst

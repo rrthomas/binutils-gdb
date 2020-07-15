@@ -7,3 +7,5 @@
 
 /doc/as.1
 /doc/asconfig.texi
+
+/po/Makefile.in

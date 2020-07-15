@@ -18,6 +18,7 @@
 *.a
 
 .deps
+.dirstamp
 .libs
 
 autom4te.cache
@@ -27,6 +28,7 @@ config.intl
 config.log
 config.status
 libtool
+Makefile
 POTFILES
 *-POTFILES
 

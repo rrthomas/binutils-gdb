@@ -6,3 +6,5 @@
 /fsf_callg_bl.c
 /gconfig.h
 /gprof.1
+
+/po/Makefile.in

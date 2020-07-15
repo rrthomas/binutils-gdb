@@ -1,2 +1,4 @@
 /s390-mkopc
 /s390-opc.tab
+
+/po/Makefile.in

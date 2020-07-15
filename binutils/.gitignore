@@ -1,5 +1,6 @@
 /addr2line
 /ar
+/bfdtest?
 /bin2c
 /coffdump
 /cxxfilt
@@ -52,3 +53,7 @@
 /doc/strip.1
 /doc/windmc.1
 /doc/windres.1
+
+/po/Makefile.in
+
+/testsuite/gentestdlls

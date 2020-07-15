@@ -1,9 +1,13 @@
 /bfd-in3.h
 /bfd.h
 /bfdver.h
+/elf32-aarch64.c
 /elf32-ia64.c
+/elf32-riscv.c
 /elf32-target.h
+/elf64-aarch64.c
 /elf64-ia64.c
+/elf64-riscv.c
 /elf64-target.h
 /libtool-soversion
 /ofiles
@@ -14,6 +18,9 @@
 /stmp-bfd-h
 /targmatch.h
 
+/doc/bfd.h
+/doc/libbfd.h
+/doc/libcoff.h
 /doc/aoutx.texi
 /doc/archive.texi
 /doc/archures.texi
@@ -38,3 +45,5 @@
 /doc/section.texi
 /doc/syms.texi
 /doc/targets.texi
+
+/po/Makefile.in

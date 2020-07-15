@@ -8,3 +8,4 @@ build-gnulib-gdbserver
 build-libiberty-gdbserver
 
 *-generated.c
+*-generated.cc

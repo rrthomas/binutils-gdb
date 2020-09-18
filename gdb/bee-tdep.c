@@ -38,7 +38,6 @@
 #include "record.h"
 #include "record-full.h"
 
-#define BEE_WORD_BYTES 4
 #include "opcode/bee.h"
 #include "bee-tdep.h"
 #include <algorithm>
@@ -1088,5 +1087,6 @@ void _initialize_bee_tdep ();
 void
 _initialize_bee_tdep ()
 {
-  register_gdbarch_init (bfd_arch_bee, bee_gdbarch_init);
+  register_gdbarch_init (bfd_arch_bee32, bee_gdbarch_init);
+  register_gdbarch_init (bfd_arch_bee64, bee_gdbarch_init);
 }

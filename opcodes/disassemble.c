@@ -164,9 +164,14 @@ disassembler (enum bfd_architecture a,
       disassemble = print_insn_avr;
       break;
 #endif
-#ifdef ARCH_bee
-    case bfd_arch_bee:
-      disassemble = print_insn_bee;
+#ifdef ARCH_bee32
+    case bfd_arch_bee32:
+      disassemble = print_insn_bee32;
+      break;
+#endif
+#ifdef ARCH_bee64
+    case bfd_arch_bee64:
+      disassemble = print_insn_bee64;
       break;
 #endif
 #ifdef ARCH_bfin

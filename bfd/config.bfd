@@ -407,10 +407,18 @@ case "${targ}" in
     targ_defvec=avr_elf32_vec
     ;;
 
-  bee-*-elf)
+#ifdef BFD64
+  bee32-*-elf)
     targ_defvec=bee_elf32_le_vec
-    targ_selvecs=bee_elf32_be_vec
+    targ_selvecs="bee_elf32_be_vec bee_elf64_le_vec bee_elf64_be_vec"
+    want64=true
     ;;
+  bee-*-elf | bee64-*-elf)
+    targ_defvec=bee_elf64_le_vec
+    targ_selvecs="bee_elf64_be_vec bee_elf32_le_vec bee_elf32_be_vec"
+    want64=true
+    ;;
+#endif
 
   bfin-*-*)
     targ_defvec=bfin_elf32_vec

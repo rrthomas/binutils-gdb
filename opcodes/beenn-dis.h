@@ -1,4 +1,4 @@
-/* Disassemble Bee instructions.
+/* Disassemble Bee instructions (word-size-independent).
    Copyright (C) 2020 Free Software Foundation, Inc.
 
    This file is part of the GNU opcodes library.
@@ -24,7 +24,6 @@
 #define STATIC_TABLE
 #define DEFINE_TABLE
 
-#define BEE_WORD_BYTES 4
 #include "opcode/bee.h"
 #include "disassemble.h"
 
@@ -32,7 +31,7 @@ static fprintf_ftype fpr;
 static void *stream;
 
 int
-print_insn_bee (bfd_vma addr, struct disassemble_info * info)
+PRINT_INSN_BEE (bfd_vma addr, struct disassemble_info * info)
 {
   int length = 4;
   int status;

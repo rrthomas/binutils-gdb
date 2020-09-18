@@ -59,6 +59,7 @@ BUILD_LIB_DEPS = @BUILD_LIB_DEPS@
 # Header files.
 HFILES = \
 	aarch64-asm.h aarch64-dis.h aarch64-opc.h aarch64-tbl.h \
+	beenn-opc.h \
 	bpf-desc.h bpf-opc.h \
 	epiphany-desc.h epiphany-opc.h \
 	fr30-desc.h fr30-opc.h \
@@ -101,8 +102,10 @@ TARGET_LIBOPCODES_CFILES = \
 	arc-opc.c \
 	arm-dis.c \
 	avr-dis.c \
-	bee-dis.c \
-	bee-opc.c \
+	bee32-dis.c \
+	bee32-opc.c \
+	bee64-dis.c \
+	bee64-opc.c \
 	bfin-dis.c \
 	cgen-asm.c \
 	cgen-bitset.c \

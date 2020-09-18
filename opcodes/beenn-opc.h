@@ -1,4 +1,4 @@
-/* bee-opc.c -- Definitions for Bee opcodes.
+/* beexx-opc.h -- Word-size-independent definitions for Bee opcodes.
    Copyright (C) 2020 Free Software Foundation, Inc.
    Contributed by Reuben Thomas <rrt@sc3d.org>.
 
@@ -20,41 +20,16 @@
    MA 02110-1301, USA.  */
 
 #include "sysdep.h"
-#define BEE_WORD_BYTES 4
 #include "opcode/bee.h"
 
-/* The Bee virtual machine's 32-bit instructions come in four forms:
-
-  CALL has two low bits 00, and the top 30 bits are a PC-relative offset in
-  words.
-
-  PUSH has two low bits 01, and the top 30 bits are a signed constant.
-
-  PUSHREL has two low bits 10, and the top 30 bits are as for CALL.
-
-  Other instructions have two low bits 11, and the next 8 bits are the
-  instruction opcode. If the top opcode bit is set, the instruction is an
-  implementation-dependent extra instruction; otherwise, a core instruction
-  that can be (dis)assembled.
-*/
-
-const bee_opc_info_t bee_opc_info[16] =
+const bee_opc_info_t bee_opc_info[] =
   {
    { BEE_OP_CALLI,    "calli" },
    { BEE_OP_PUSHI,    "pushi" },
    { BEE_OP_PUSHRELI, "pushreli" },
    { BEE_OP_JUMPI,    "jumpi" },
-   { 0, "" },
-   { 0, "" },
-   { 0, "" },
    { BEE_OP_JUMPZI,   "jumpzi" },
-   { 0, "" },
-   { 0, "" },
-   { 0, "" },
    { BEE_OP_TRAP,     "trap" },
-   { 0, "" },
-   { 0, "" },
-   { 0, "" },
    { BEE_OP_INSN,     "" },
   };
 

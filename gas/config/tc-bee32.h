@@ -1,4 +1,4 @@
-/* tc-bee.h -- Header file for tc-bee.c.
+/* tc-bee32.h -- Header file for tc-bee32.c.
 
    Copyright (C) 2020 Free Software Foundation, Inc.
 
@@ -18,7 +18,7 @@
    with GAS; see the file COPYING.  If not, write to the Free Software
    Foundation, 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301, USA.  */
 
-#define TC_BEE 1
+#define TC_BEE32 1
 
 #ifndef TARGET_BYTES_BIG_ENDIAN
 #define TARGET_BYTES_BIG_ENDIAN 0
@@ -29,7 +29,7 @@
 /* This macro is the BFD architecture to pass to `bfd_set_arch_mach'.  */
 #define TARGET_FORMAT (target_big_endian ? "elf32-bigbee" : "elf32-littlebee")
 
-#define TARGET_ARCH bfd_arch_bee
+#define TARGET_ARCH bfd_arch_bee32
 
 #define md_undefined_symbol(NAME)           0
 

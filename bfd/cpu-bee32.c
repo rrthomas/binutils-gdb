@@ -1,5 +1,6 @@
-/* Bee ELF support for BFD.
+/* BFD support for the 32-bit Bee virtual machine.
    Copyright (C) 2020 Free Software Foundation, Inc.
+   Written by Reuben Thomas
 
    This file is part of BFD, the Binary File Descriptor library.
 
@@ -17,22 +18,25 @@
    along with this program; if not, write to the Free Software Foundation,
    Inc., 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301, USA.  */
 
-#ifndef _ELF_BEE_H
-#define _ELF_BEE_H
+#include "sysdep.h"
+#include "bfd.h"
+#include "libbfd.h"
 
-#include "elf/reloc-macros.h"
 
-/* Relocation types.  */
-START_RELOC_NUMBERS (elf_bee_reloc_type)
-  RELOC_NUMBER (R_BEE_NONE, 0)
-  RELOC_NUMBER (R_BEE_32, 1)
-  RELOC_NUMBER (R_BEE_64, 2)
-  RELOC_NUMBER (R_BEE_30, 3)
-  RELOC_NUMBER (R_BEE_61, 4)
-  RELOC_NUMBER (R_BEE_8, 5)
-  RELOC_NUMBER (R_BEE_PCREL30, 6)
-  RELOC_NUMBER (R_BEE_PCREL28, 7)
-  RELOC_NUMBER (R_BEE_PCREL61, 8)
-END_RELOC_NUMBERS (R_BEE_max)
-
-#endif /* _ELF_BEE_H */
+const bfd_arch_info_type bfd_bee32_arch =
+{
+  32,		      /* Bits in a word.  */
+  32,		      /* Bits in an address.  */
+  8,		      /* Bits in a byte.  */
+  bfd_arch_bee32,     /* Architecture Number.  */
+  bfd_mach_bee32,     /* Machine number.  */
+  "bee32",	      /* Arch name.  */
+  "bee32",	      /* Printable name.  */
+  2,		      /* Section alignment power.  */
+  TRUE,	              /* The one and only.  */
+  bfd_default_compatible,
+  bfd_default_scan,
+  bfd_arch_default_fill,
+  NULL,
+  0 /* Maximum offset of a reloc from the start of an insn.  */
+};

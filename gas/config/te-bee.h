@@ -22,7 +22,6 @@
 
 #include "as.h"
 #include "safe-ctype.h"
-#define BEE_WORD_BYTES 4
 #include "opcode/bee.h"
 #include "elf/bee.h"
 

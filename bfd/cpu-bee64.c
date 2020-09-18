@@ -1,4 +1,4 @@
-/* BFD support for the Bee virtual machine.
+/* BFD support for the 64-bit Bee virtual machine.
    Copyright (C) 2020 Free Software Foundation, Inc.
    Written by Reuben Thomas
 
@@ -23,16 +23,16 @@
 #include "libbfd.h"
 
 
-const bfd_arch_info_type bfd_bee_arch =
+const bfd_arch_info_type bfd_bee64_arch =
 {
-  32,		      /* Bits in a word.  */
-  32,		      /* Bits in an address.  */
+  64,		      /* Bits in a word.  */
+  64,		      /* Bits in an address.  */
   8,		      /* Bits in a byte.  */
-  bfd_arch_bee,       /* Architecture Number.  */
-  bfd_mach_bee,       /* Machine number.  */
-  "bee",	      /* Arch name.  */
-  "bee",	      /* Printable name.  */
-  2,		      /* Section alignment power.  */
+  bfd_arch_bee64,     /* Architecture Number.  */
+  bfd_mach_bee64,     /* Machine number.  */
+  "bee64",	      /* Arch name.  */
+  "bee64",	      /* Printable name.  */
+  3,		      /* Section alignment power.  */
   TRUE,	              /* The one and only.  */
   bfd_default_compatible,
   bfd_default_scan,

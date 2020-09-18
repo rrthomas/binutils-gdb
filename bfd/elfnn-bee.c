@@ -1,7 +1,7 @@
-/* Bee-specific support for 32-bit ELF.
+/* Bee-specific support for NN-bit ELF.
    Copyright (C) 2009-2020 Free Software Foundation, Inc.
 
-   Copied from elf32-moxie.c, which is
+   Copied from elf32-moxie.c, and elfnn-riscv.c which are
    Copyright (C) 1998-2020 Free Software Foundation, Inc.
 
    This file is part of BFD, the Binary File Descriptor library.
@@ -25,170 +25,19 @@
 #include "bfd.h"
 #include "libbfd.h"
 #include "elf-bfd.h"
+#include "elfxx-bee.h"
 #include "elf/bee.h"
 
-/* Forward declarations.  */
-
-static reloc_howto_type bee_elf_howto_table [] =
-{
-  /* This reloc does nothing.  */
-  HOWTO (R_BEE_NONE,		/* type */
-	 0,			/* rightshift */
-	 3,			/* size (0 = byte, 1 = short, 2 = long) */
-	 0,			/* bitsize */
-	 FALSE,			/* pc_relative */
-	 0,			/* bitpos */
-	 complain_overflow_dont, /* complain_on_overflow */
-	 bfd_elf_generic_reloc,	/* special_function */
-	 "R_BEE_NONE",		/* name */
-	 FALSE,			/* partial_inplace */
-	 0,			/* src_mask */
-	 0,			/* dst_mask */
-	 FALSE),		/* pcrel_offset */
-
-  /* A 32 bit absolute relocation.  */
-  HOWTO (R_BEE_32,		/* type */
-	 0,			/* rightshift */
-	 2,			/* size (0 = byte, 1 = short, 2 = long) */
-	 32,			/* bitsize */
-	 FALSE,			/* pc_relative */
-	 0,			/* bitpos */
-	 complain_overflow_bitfield, /* complain_on_overflow */
-	 bfd_elf_generic_reloc,	/* special_function */
-	 "R_BEE_32",		/* name */
-	 FALSE,			/* partial_inplace */
-	 0x00000000,		/* src_mask */
-	 0xffffffff,		/* dst_mask */
-	 FALSE),		/* pcrel_offset */
-
-  /* A 30 bit absolute relocation.  */
-  HOWTO (R_BEE_30,	/* type.  */
-	 2,			/* rightshift.  */
-	 2,			/* size (0 = byte, 1 = short, 2 = long).  */
-	 30,			/* bitsize.  */
-	 FALSE,			/* pc_relative.  */
-	 2,			/* bitpos.  */
-	 complain_overflow_signed, /* complain_on_overflow.  */
-	 bfd_elf_generic_reloc,	/* special_function.  */
-	 "R_BEE_30",		/* name.  */
-	 FALSE,			/* partial_inplace.  */
-	 0,			/* src_mask.  */
-	 0xfffffffc,		/* dst_mask.  */
-	 FALSE),		/* pcrel_offset.  */
-
-  /* An 8 bit absolute relocation.  */
-  HOWTO (R_BEE_8,	/* type.  */
-	 0,			/* rightshift.  */
-	 0,			/* size (0 = byte, 1 = short, 2 = long).  */
-	 8,			/* bitsize.  */
-	 FALSE,			/* pc_relative.  */
-	 0,			/* bitpos.  */
-	 complain_overflow_signed, /* complain_on_overflow.  */
-	 bfd_elf_generic_reloc,	/* special_function.  */
-	 "R_BEE_8",		/* name.  */
-	 FALSE,			/* partial_inplace.  */
-	 0,			/* src_mask.  */
-	 0xff,			/* dst_mask.  */
-	 FALSE),		/* pcrel_offset.  */
-
-  /* A 30 bit PC-relative relocation.  */
-  HOWTO (R_BEE_PCREL30,	/* type.  */
-	 2,			/* rightshift.  */
-	 2,			/* size (0 = byte, 1 = short, 2 = long).  */
-	 30,			/* bitsize.  */
-	 TRUE,			/* pc_relative.  */
-	 2,			/* bitpos.  */
-	 complain_overflow_signed, /* complain_on_overflow.  */
-	 bfd_elf_generic_reloc,	/* special_function.  */
-	 "R_BEE_PCREL30",	/* name.  */
-	 FALSE,			/* partial_inplace.  */
-	 0,			/* src_mask.  */
-	 0xfffffffc,		/* dst_mask.  */
-	 TRUE),			/* pcrel_offset.  */
-
-  /* A 28 bit PC-relative relocation.  */
-  HOWTO (R_BEE_PCREL28,	/* type.  */
-	 2,			/* rightshift.  */
-	 2,			/* size (0 = byte, 1 = short, 2 = long).  */
-	 28,			/* bitsize.  */
-	 TRUE,			/* pc_relative.  */
-	 4,			/* bitpos.  */
-	 complain_overflow_signed, /* complain_on_overflow.  */
-	 bfd_elf_generic_reloc,	/* special_function.  */
-	 "R_BEE_PCREL28",	/* name.  */
-	 FALSE,			/* partial_inplace.  */
-	 0,			/* src_mask.  */
-	 0xfffffffc,		/* dst_mask.  */
-	 TRUE),			/* pcrel_offset.  */
-};
 
-/* Map BFD reloc types to BEE ELF reloc types.  */
-
-struct bee_reloc_map
-{
-  bfd_reloc_code_real_type bfd_reloc_val;
-  unsigned int bee_reloc_val;
-};
-
-static const struct bee_reloc_map bee_reloc_map [] =
-{
-  { BFD_RELOC_NONE,	       R_BEE_NONE },
-  { BFD_RELOC_32,	       R_BEE_32 },
-  { BFD_RELOC_BEE_30,	       R_BEE_30 },
-  { BFD_RELOC_8,	       R_BEE_8 },
-  { BFD_RELOC_BEE_30_PCREL,    R_BEE_PCREL30 },
-  { BFD_RELOC_BEE_28_PCREL,    R_BEE_PCREL28 },
-};
-
-static reloc_howto_type *
-bee_reloc_type_lookup (bfd *abfd ATTRIBUTE_UNUSED,
-			 bfd_reloc_code_real_type code)
-{
-  unsigned int i;
-
-  for (i = sizeof (bee_reloc_map) / sizeof (bee_reloc_map[0]);
-       i--;)
-    if (bee_reloc_map [i].bfd_reloc_val == code)
-      return & bee_elf_howto_table [bee_reloc_map[i].bee_reloc_val];
-
-  return NULL;
-}
-
-static reloc_howto_type *
-bee_reloc_name_lookup (bfd *abfd ATTRIBUTE_UNUSED, const char *r_name)
-{
-  unsigned int i;
-
-  for (i = 0;
-       i < sizeof (bee_elf_howto_table) / sizeof (bee_elf_howto_table[0]);
-       i++)
-    if (bee_elf_howto_table[i].name != NULL
-	&& strcasecmp (bee_elf_howto_table[i].name, r_name) == 0)
-      return &bee_elf_howto_table[i];
-
-  return NULL;
-}
-
 /* Set the howto pointer for an BEE ELF reloc.  */
 
 static bfd_boolean
 bee_info_to_howto_rela (bfd *abfd,
-			  arelent *cache_ptr,
-			  Elf_Internal_Rela *dst)
+                        arelent *cache_ptr,
+                        Elf_Internal_Rela *dst)
 {
-  unsigned int r_type;
-
-  r_type = ELF32_R_TYPE (dst->r_info);
-  if (r_type >= (unsigned int) R_BEE_max)
-    {
-      /* xgettext:c-format */
-      _bfd_error_handler (_("%pB: unsupported relocation type %#x"),
-			  abfd, r_type);
-      bfd_set_error (bfd_error_bad_value);
-      return FALSE;
-    }
-  cache_ptr->howto = & bee_elf_howto_table [r_type];
-  return TRUE;
+  cache_ptr->howto = bee_elf_rtype_to_howto (abfd, ELFNN_R_TYPE (dst->r_info));
+  return cache_ptr->howto != NULL;
 }
 
 /* Perform a single relocation.  We use the standard BFD routines.  */
@@ -275,9 +124,9 @@ bee_elf_relocate_section (bfd *output_bfd,
       const char *name;
       int r_type;
 
-      r_type = ELF32_R_TYPE (rel->r_info);
-      r_symndx = ELF32_R_SYM (rel->r_info);
-      howto  = bee_elf_howto_table + r_type;
+      r_type = ELFNN_R_TYPE (rel->r_info);
+      r_symndx = ELFNN_R_SYM (rel->r_info);
+      howto  = bee_elf_rtype_to_howto (input_bfd, r_type);
       h      = NULL;
       sym    = NULL;
       sec    = NULL;
@@ -397,7 +246,7 @@ bee_elf_check_relocs (bfd *abfd,
       struct elf_link_hash_entry *h;
       unsigned long r_symndx;
 
-      r_symndx = ELF32_R_SYM (rel->r_info);
+      r_symndx = ELFNN_R_SYM (rel->r_info);
       if (r_symndx < symtab_hdr->sh_info)
 	h = NULL;
       else
@@ -412,14 +261,14 @@ bee_elf_check_relocs (bfd *abfd,
   return TRUE;
 }
 
-#define ELF_ARCH		bfd_arch_bee
+#define ELF_ARCH		bfd_arch_beeNN
 #define ELF_MACHINE_CODE	EM_BEE
 #define ELF_MAXPAGESIZE		0x1
 
-#define TARGET_BIG_SYM		bee_elf32_be_vec
-#define TARGET_BIG_NAME		"elf32-bigbee"
-#define TARGET_LITTLE_SYM	bee_elf32_le_vec
-#define TARGET_LITTLE_NAME	"elf32-littlebee"
+#define TARGET_BIG_SYM		bee_elfNN_be_vec
+#define TARGET_BIG_NAME		"elfNN-bigbee"
+#define TARGET_LITTLE_SYM	bee_elfNN_le_vec
+#define TARGET_LITTLE_NAME	"elfNN-littlebee"
 
 #define elf_info_to_howto_rel			NULL
 #define elf_info_to_howto			bee_info_to_howto_rela
@@ -430,7 +279,7 @@ bee_elf_check_relocs (bfd *abfd,
 #define elf_backend_can_gc_sections		1
 #define elf_backend_rela_normal			1
 
-#define bfd_elf32_bfd_reloc_type_lookup		bee_reloc_type_lookup
-#define bfd_elf32_bfd_reloc_name_lookup		bee_reloc_name_lookup
+#define bfd_elfNN_bfd_reloc_type_lookup		bee_reloc_type_lookup
+#define bfd_elfNN_bfd_reloc_name_lookup		bee_reloc_name_lookup
 
-#include "elf32-target.h"
+#include "elfNN-target.h"

@@ -95,7 +95,8 @@ ALL_MACHINES = \
 	cpu-arc.lo \
 	cpu-arm.lo \
 	cpu-avr.lo \
-	cpu-bee.lo \
+	cpu-bee32.lo \
+	cpu-bee64.lo \
 	cpu-bfin.lo \
 	cpu-bpf.lo \
 	cpu-cr16.lo \
@@ -180,7 +181,8 @@ ALL_MACHINES_CFILES = \
 	cpu-arc.c \
 	cpu-arm.c \
 	cpu-avr.c \
-	cpu-bee.c \
+	cpu-bee32.c \
+	cpu-bee64.c \
 	cpu-bfin.c \
 	cpu-bpf.c \
 	cpu-cr16.c \
@@ -296,7 +298,6 @@ BFD32_BACKENDS = \
 	elf32-arc.lo \
 	elf32-arm.lo \
 	elf32-avr.lo \
-	elf32-bee.lo \
 	elf32-bfin.lo \
 	elf32-cr16.lo \
 	elf32-cris.lo \
@@ -430,7 +431,6 @@ BFD32_BACKENDS_CFILES = \
 	elf32-arc.c \
 	elf32-arm.c \
 	elf32-avr.c \
-	elf32-bee.c \
 	elf32-bfin.c \
 	elf32-cr16.c \
 	elf32-cris.c \
@@ -537,6 +537,9 @@ BFD64_BACKENDS = \
 	elf32-aarch64.lo \
 	elf64-aarch64.lo \
 	elfxx-aarch64.lo \
+	elf32-bee.lo \
+	elf64-bee.lo \
+	elfxx-bee.lo \
 	aix5ppc-core.lo \
 	aout64.lo \
 	coff-alpha.lo \
@@ -604,6 +607,7 @@ BFD64_BACKENDS_CFILES = \
 	elf64.c \
 	elfn32-mips.c \
 	elfxx-aarch64.c \
+	elfxx-bee.c \
 	elfxx-ia64.c \
 	elfxx-mips.c \
 	elfxx-riscv.c \
@@ -668,6 +672,7 @@ SOURCE_CFILES = \
 
 BUILD_CFILES = \
 	elf32-aarch64.c elf64-aarch64.c \
+	elf32-bee.c elf64-bee.c \
 	elf32-ia64.c elf64-ia64.c \
 	elf32-riscv.c elf64-riscv.c \
 	peigen.c pepigen.c pex64igen.c
@@ -689,7 +694,7 @@ SOURCE_HFILES = \
 	elf64-hppa.h elf64-ppc.h elf64-tilegx.h \
 	elf-bfd.h elfcode.h elfcore.h elf-hppa.h elf-linker-x86.h \
 	elf-linux-core.h elf-nacl.h elf-s390.h elf-vxworks.h \
-	elfxx-aarch64.h elfxx-ia64.h elfxx-mips.h elfxx-riscv.h \
+	elfxx-aarch64.h elfxx-bee.h elfxx-ia64.h elfxx-mips.h elfxx-riscv.h \
 	elfxx-sparc.h elfxx-tilegx.h elfxx-x86.h \
 	genlink.h go32stub.h \
 	libaout.h libbfd.h libcoff.h libecoff.h libhppa.h \
@@ -836,6 +841,14 @@ elf32-aarch64.c : elfnn-aarch64.c
 
 elf64-aarch64.c : elfnn-aarch64.c
 	echo "#line 1 \"elfnn-aarch64.c\"" > $@
+	$(SED) -e s/NN/64/g < $< >> $@
+
+elf32-bee.c : elfnn-bee.c
+	echo "#line 1 \"elfnn-bee.c\"" > $@
+	$(SED) -e s/NN/32/g < $< >> $@
+
+elf64-bee.c : elfnn-bee.c
+	echo "#line 1 \"elfnn-bee.c\"" > $@
 	$(SED) -e s/NN/64/g < $< >> $@
 
 elf32-ia64.c : elfnn-ia64.c

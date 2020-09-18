@@ -133,7 +133,8 @@ TARGET_CPU_CFILES = \
 	config/tc-arc.c \
 	config/tc-arm.c \
 	config/tc-avr.c \
-	config/tc-bee.c \
+	config/tc-bee32.c \
+	config/tc-bee64.c \
 	config/tc-bfin.c \
 	config/tc-bpf.c \
 	config/tc-cr16.c \
@@ -312,6 +313,7 @@ TARG_ENV_HFILES = \
 	config/te-armfbsdeabi.h \
 	config/te-armfbsdvfp.h \
 	config/te-armlinuxeabi.h \
+	config/te-bee.h \
 	config/te-csky_abiv1.h \
 	config/te-csky_abiv1_linux.h \
 	config/te-csky_abiv2.h \

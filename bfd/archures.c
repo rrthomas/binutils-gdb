@@ -555,8 +555,10 @@ DESCRIPTION
 .#define bfd_mach_ck807		6
 .#define bfd_mach_ck810		7
 .#define bfd_mach_ck860		8
-.  bfd_arch_bee,       {* The Bee virtual machine.  *}
-.#define bfd_mach_bee		1
+.  bfd_arch_bee32,       {* The Bee virtual machine (32-bit).  *}
+.  bfd_arch_bee64,       {* The Bee virtual machine (64-bit).  *}
+.#define bfd_mach_bee32		1
+.#define bfd_mach_bee64		2
 .  bfd_arch_last
 .  };
 */
@@ -616,7 +618,8 @@ extern const bfd_arch_info_type bfd_alpha_arch;
 extern const bfd_arch_info_type bfd_arc_arch;
 extern const bfd_arch_info_type bfd_arm_arch;
 extern const bfd_arch_info_type bfd_avr_arch;
-extern const bfd_arch_info_type bfd_bee_arch;
+extern const bfd_arch_info_type bfd_bee32_arch;
+extern const bfd_arch_info_type bfd_bee64_arch;
 extern const bfd_arch_info_type bfd_bfin_arch;
 extern const bfd_arch_info_type bfd_cr16_arch;
 extern const bfd_arch_info_type bfd_cris_arch;
@@ -706,7 +709,8 @@ static const bfd_arch_info_type * const bfd_archures_list[] =
     &bfd_arc_arch,
     &bfd_arm_arch,
     &bfd_avr_arch,
-    &bfd_bee_arch,
+    &bfd_bee32_arch,
+    &bfd_bee64_arch,
     &bfd_bfin_arch,
     &bfd_cr16_arch,
     &bfd_cris_arch,

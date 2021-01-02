@@ -1298,7 +1298,6 @@ HFILES_NO_SRCDIR = \
 	gdb_obstack.h \
 	gdb_proc_service.h \
 	gdb_regex.h \
-	gdb_select.h \
 	gdb-stabs.h \
 	gdb_vfork.h \
 	gdb_wchar.h \

@@ -74,7 +74,7 @@ main (int argc, char **argv)
      instead of allowing it to run free.  The sole purpose of this
      HACK is to allow the sim_resume interface's step argument to be
      tested without having to build/run gdb. */
-  if (strlen (myname) > 4 && strcmp (myname - 4, "step") == 0)
+  if (strlen (myname) > 4 && strcmp (myname + strlen (myname) - 4, "step") == 0)
     {
       single_step = 1;
     }
